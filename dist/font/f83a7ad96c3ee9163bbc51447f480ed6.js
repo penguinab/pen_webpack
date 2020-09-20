@@ -1,0 +1,1 @@
+var TO_STRING_TAG_SUPPORT=require("../internals/to-string-tag-support"),redefine=require("../internals/redefine"),toString=require("../internals/object-to-string");TO_STRING_TAG_SUPPORT||redefine(Object.prototype,"toString",toString,{unsafe:!0});
