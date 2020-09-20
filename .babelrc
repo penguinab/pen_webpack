@@ -1,0 +1,57 @@
+// {
+//     "presets": [
+//         ["@babel/preset-env",
+//             {
+//             //  "modules": "auto",   //default 就是auto是采用esModule不会转commonjs
+//             "useBuiltIns":"usage",
+//             // //配置此参数的值为 usage ，必须要同时设置 corejs
+//             "corejs":3}
+//            //  babel默认是不处理API，只支持语法，例如class语法，箭头函数语法；一些API，
+//      //从babel7.4.0开始就放弃了@babel/polyfill的使用，取而代之的是使用core-js来实现polyfill
+//      // 开启corejs3才会引入pollyfill例如Promise(ie: ???)，Set，String.prototype.includes这些，默认不会转义，
+//         ]
+//     ]
+//     // "plugins": [
+//     //     ["@babel/plugin-transform-runtime",{
+//     //         // 移除了 @babel/preset-env 的 useBuiltIns 的配置，
+//     //         // 不然不就重复了嘛嘛嘛，不信的话，你用 async/await 编译下试试咯
+//     //         "corejs":3
+//     //     }]
+//     // ]
+// }
+{
+    "presets": [
+        ["@babel/preset-env",{
+            "debug": true
+            // "targets":{
+            //     "browsers":"ie > 8"
+            // }
+            // "corejs":{
+            //     "version":3,
+            //     "proposals":true
+            // }
+        }]
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "helpers": true,
+                "regenerator": true,
+                "corejs": 3,
+                "absoluteRuntime": true
+                // "useESModules": true
+                //插件是通过CommonJs方式引用
+            }
+        ]
+    ]
+}
+//https://babeljs.io/docs/en/babel-plugin-transform-runtime#usage
+// {
+//     "helpers": true,
+//     "corejs": false,
+//     "regenerator": true,
+//     "useESModules": false,
+//     "absoluteRuntime": false,
+//     "version": "7.0.0-beta.0"
+//   }
